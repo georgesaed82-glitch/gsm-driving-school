@@ -304,20 +304,23 @@ function HomePage() {
           <div style={{ background: COLORS.greenDeep, borderRadius: 4, padding: isMobile ? "26px 22px" : "32px 28px", color: COLORS.paper }}>
             <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: COLORS.brass, marginBottom: 18 }}>About GSM</div>
             <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "rgba(246,243,236,0.85)", marginBottom: 16 }}>
-              George founded GSM Driving School in 2005 and has been DVSA-approved ever since, teaching across Notting Hill Gate, Holland Park and High Street Kensington — covering postcodes W9, W10, W12, W14, W4 and W3. Abdul, also DVSA-approved, joined the team bringing the same patient, structured teaching style.
+              George founded GSM Driving School in 2005 and has been DVSA-approved ever since, teaching across Notting Hill Gate, Holland Park and High Street Kensington — covering postcodes W9, W10, W12, W14, W4 and W3. Michael, also DVSA-approved, joined the team bringing the same patient, structured teaching style.
+            </p>
+            <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "rgba(246,243,236,0.85)", marginBottom: 16 }}>
+              Between them, every GSM instructor brings over 20 years of experience teaching learners to drive — two decades and more of knowing exactly where learners get caught out, and how to fix it before test day.
             </p>
             <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "rgba(246,243,236,0.85)" }}>
-              Two decades teaching the same streets means knowing exactly where learners get caught out — and how to fix it before test day.
+              Lessons are available in both manual and automatic cars, so you can learn in whichever suits you best.
             </p>
           </div>
         </div>
       </header>
       <Section>
         <Junction label="Why GSM" />
-        <h2 style={{ fontFamily: "Fraunces, serif", fontSize: isMobile ? 24 : 30, fontWeight: 600, color: COLORS.greenDeep, marginBottom: isMobile ? 24 : 36, maxWidth: 560 }}>One instructor, three patches, twenty years</h2>
+        <h2 style={{ fontFamily: "Fraunces, serif", fontSize: isMobile ? 24 : 30, fontWeight: 600, color: COLORS.greenDeep, marginBottom: isMobile ? 24 : 36, maxWidth: 560 }}>Over 20 years' experience, manual and automatic</h2>
         <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: 1, background: COLORS.line, border: `1px solid ${COLORS.line}` }}>
           {[
-            { t: "Local knowledge", d: "Every test route junction and tricky give-way in W11 and W8, learned over 20 years." },
+            { t: "Local knowledge", d: "Every test route junction and tricky give-way in W11 and W8, learned over 20+ years." },
             { t: "Consistent teaching", d: "Same instructor from first lesson to test day — no handovers, no repeated explanations." },
             { t: "Full support", d: "Practical lessons paired with a theory portal so revision and driving reinforce each other." },
           ].map((c, i) => (
@@ -336,7 +339,7 @@ function PracticalPage() {
   const { isMobile } = useViewport();
   const rows = [
     { name: "Single lesson", desc: "Pay-as-you-go, ideal for starting out or topping up." },
-    { name: "Block booking (10hrs)", desc: "Pre-paid block, the most popular ongoing package." },
+    { name: "Block booking (12hrs)", desc: "Pre-paid block, the most popular ongoing package." },
     { name: "Intensive course", desc: "Compressed teaching over consecutive days." },
     { name: "Pass Plus", desc: "Post-test course covering motorway and night driving." },
   ];
@@ -350,6 +353,9 @@ function PracticalPage() {
       <h1 style={{ fontFamily: "Fraunces, serif", fontSize: isMobile ? 28 : 36, color: COLORS.greenDeep, marginBottom: 14 }}>Learn on the streets you'll be tested on</h1>
       <p style={{ color: COLORS.inkSoft, fontSize: isMobile ? 14.5 : 16, lineHeight: 1.6, maxWidth: 600, marginBottom: isMobile ? 28 : 44 }}>
         Door-to-door lessons across Notting Hill Gate, Holland Park and High Street Kensington — covering W9, W10, W12, W14, W4 and W3 — structured around the real DVSA test routes used at local test centres.
+      </p>
+      <p style={{ color: COLORS.inkSoft, fontSize: 13, lineHeight: 1.6, maxWidth: 600, marginBottom: isMobile ? 28 : 44, fontStyle: "italic" }}>
+        Prices below are for weekday lessons. Weekend lessons are available at a separate rate — call {BUSINESS.phone} for weekend pricing.
       </p>
       <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)", gap: 16, marginBottom: isMobile ? 36 : 48 }}>
         {rows.map((r, i) => (
@@ -457,7 +463,7 @@ function TipsPage() {
       <Junction label="Pass first time" />
       <h1 style={{ fontFamily: "Fraunces, serif", fontSize: isMobile ? 28 : 36, color: COLORS.greenDeep, marginBottom: 14 }}>Top tips to pass your test first time</h1>
       <p style={{ color: COLORS.inkSoft, fontSize: isMobile ? 14.5 : 16, lineHeight: 1.6, maxWidth: 620, marginBottom: isMobile ? 24 : 36 }}>
-        Real instructor knowledge from two decades of test days — what examiners actually mean when they give an instruction, and the small judgement calls that make the difference on the day.
+        Real instructor knowledge from over two decades of test days — what examiners actually mean when they give an instruction, and the small judgement calls that make the difference on the day.
       </p>
       <PassTestTips />
     </Section>
@@ -510,7 +516,7 @@ function ReviewsPage() {
   const reviews = [
     { name: "Ksenia S", area: "GSM learner", text: "A disheartening experience years ago nearly meant giving up on a UK licence entirely — George's patience, clarity and genuine passion for his students turned the whole journey around. More than an instructor: a real driving force behind newfound confidence that's carried well beyond the road.", stars: 5 },
     { name: "Grace Jemima", area: "GSM learner", text: "Brilliant, thank you so much — would highly recommend.", stars: 5 },
-    { name: "Robert McIlwham", area: "GSM learner", text: "Passed thanks to Abdul — patient, professional and supportive, explaining everything clearly and building confidence with every lesson. Felt genuinely well prepared going into the test.", stars: 5 },
+    { name: "Robert McIlwham", area: "GSM learner", text: "Passed thanks to Michael — patient, professional and supportive, explaining everything clearly and building confidence with every lesson. Felt genuinely well prepared going into the test.", stars: 5 },
     { name: "Valeria Rozov", area: "GSM learner", text: "Came to George after a stressful experience with another school, and his patience from lesson one made all the difference. He took me from zero to pass, adapting to my pace the whole way, with genuinely original techniques you won't find anywhere else.", stars: 5 },
     { name: "Recent pass", area: "GSM learner", text: "George took me from complete beginner to passing, with incredible patience after a difficult experience with a previous instructor elsewhere.", stars: 5 },
     { name: "Ramiz", area: "GSM learner", text: "Passed first time with such ease, all thanks to George — a calm, friendly atmosphere paired with genuinely impeccable teaching that covered every big and small point for the test. Lessons tailored just for me. An absolute pleasure.", stars: 5 },
@@ -519,7 +525,7 @@ function ReviewsPage() {
     { name: "Jeanne d'Ornellas", area: "GSM learner", text: "Had several years of US driving experience and came to George to get my UK licence after moving back — methodical, pleasant lessons that left me feeling every base was covered. Passed first time, with nothing catching me off guard.", stars: 5 },
     { name: "Lona J", area: "Refresher lessons", text: "Held an EU licence but hadn't driven in over 10 years — George was endlessly patient, explained the why behind everything, and helped me regain real confidence behind the wheel. Worth the wait for a slot with him.", stars: 5 },
     { name: "Adam Elwan", area: "GSM learner", text: "An amazing experience all round — patient, thorough explanations and lessons of a genuinely high standard. Passed the practical first time.", stars: 5 },
-    { name: "Abdul M", area: "GSM instructor — Part 2 instructor test", text: "Passed my Part 2 instructor test first time thanks to George — knowledgeable, calm and easy to learn from, always making sure things fully clicked before moving on. Top-notch support from start to finish.", stars: 5 },
+    { name: "Michael", area: "GSM instructor — Part 2 instructor test", text: "Passed my Part 2 instructor test first time thanks to George — knowledgeable, calm and easy to learn from, always making sure things fully clicked before moving on. Top-notch support from start to finish.", stars: 5 },
     { name: "Jennifer Girgis", area: "GSM learner", text: "Patience, expertise and clear explanations made the difference — passed my test on the first attempt, with constructive feedback that helped me improve quickly throughout. Highly recommend.", stars: 5 },
     { name: "Ardz", area: "GSM learner", text: "Discouraged after failing my first test elsewhere, but George completely turned things around — patient, knowledgeable, and confidence-building. Passed first time with him.", stars: 5 },
     { name: "Tabitha Hull", area: "GSM learner", text: "Failed three times elsewhere and thought I'd never pass — then passed first time with George, with zero minors. Every single lesson was a genuine pleasure, with constant support throughout.", stars: 5 },
@@ -999,7 +1005,7 @@ function buildSystemPrompt(isLearner) {
   let prompt = `You are the AI assistant for GSM Driving School (George's School of Motoring), a real DVSA-approved driving school in West London, established 2005.
 
 Real business facts you must use and never contradict:
-- Instructors: George (founder) and Abdul, both DVSA-approved, teaching across the covered areas.
+- Instructors: George (founder) and Michael, both DVSA-approved, teaching across the covered areas. Each instructor brings over 20 years of driving instruction experience.
 - Areas covered: Notting Hill Gate, Holland Park, High Street Kensington — and postcodes W9, W10, W12, W14, W4, and W3.
 - Both manual and automatic lessons are available.
 - Address: ${BUSINESS.address}.
