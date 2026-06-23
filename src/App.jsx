@@ -20,7 +20,7 @@ const BUSINESS = {
   email: "gsmdrivingschool@outlook.com",
   rating: 5.0,
   ratingCount: 144,
-  googleMapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJS9BLMgMQdkgRCs_x1LDs56o",
+  googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=GSM+Driving+School&query_place_id=ChIJS9BLMgMQdkgRCs_x1LDs56o",
   instagramUrl: "https://www.instagram.com/gsm_driving_school_/",
   hours: [
     { day: "Monday", time: "7:00 AM – 8:00 PM" },
@@ -60,17 +60,6 @@ const VIDEOS = {
 };
 
 const GOV_UK_PRACTICE_TEST_URL = "https://www.gov.uk/take-practice-theory-test";
-
-// Some sandboxed/preview environments block a plain <a target="_blank"> click.
-// window.open with explicit features is a more reliable cross-context way to
-// open an external link from inside an iframe-based preview.
-function openExternal(url) {
-  const win = window.open(url, "_blank", "noopener,noreferrer");
-  if (!win) {
-    // Pop-up blocked — fall back to same-tab navigation so the click still does something.
-    window.location.href = url;
-  }
-}
 
 function VideoPlayer({ src, title }) {
   if (!src) {
@@ -192,9 +181,9 @@ function Logo({ size = 38 }) {
         fontFamily: "Fraunces, serif", fontWeight: 700, fontSize: size * 0.37, color: COLORS.greenDeep, flexShrink: 0,
       }}>GSM</div>
       <div style={{ fontFamily: "Fraunces, serif", fontWeight: 600, fontSize: 18, color: COLORS.greenDeep, lineHeight: 1 }}>
-        George's School of Motoring
+        GSM Driving School
         <span style={{ display: "block", fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: 10.5, letterSpacing: "0.08em", color: COLORS.inkSoft, marginTop: 3, textTransform: "uppercase" }}>
-          Est. 2005 · West London
+          George's School of Motoring · Est. 2005
         </span>
       </div>
     </div>
@@ -301,12 +290,12 @@ function HomePage() {
             <h1 style={{ fontFamily: "Fraunces, serif", fontSize: isMobile ? 34 : 52, fontWeight: 600, lineHeight: 1.08, color: COLORS.greenDeep, margin: "0 0 16px" }}>
               Drive today. <em style={{ fontStyle: "italic", fontWeight: 500, color: COLORS.red }}>Succeed</em> tomorrow.
             </h1>
-            <a href={BUSINESS.googleMapsUrl} onClick={(e) => { e.preventDefault(); openExternal(BUSINESS.googleMapsUrl); }} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16, flexWrap: "wrap", textDecoration: "none", cursor: "pointer" }}>
+            <a href={BUSINESS.googleMapsUrl} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16, flexWrap: "wrap", textDecoration: "none", cursor: "pointer" }}>
               <span style={{ color: COLORS.brassDeep, fontSize: 15 }}>★★★★★</span>
               <span style={{ fontSize: 13.5, color: COLORS.inkSoft, textDecoration: "underline" }}>{BUSINESS.rating.toFixed(1)} from {BUSINESS.ratingCount} Google reviews</span>
             </a>
             <p style={{ fontSize: isMobile ? 15.5 : 17.5, lineHeight: 1.6, color: COLORS.inkSoft, maxWidth: 460, marginBottom: 26 }}>
-              George's School of Motoring has taught West London to drive since 2005 — practical lessons, theory prep and a full learner portal, from instructors who know these roads.
+              GSM Driving School has taught West London to drive since 2005 — practical lessons, theory prep and a full learner portal, from instructors who know these roads.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <a href="tel:07961585231" style={{ background: COLORS.red, color: COLORS.paper, padding: isMobile ? "15px 24px" : "15px 28px", borderRadius: 3, fontWeight: 600, fontSize: 15, textDecoration: "none", display: "block", width: isMobile ? "100%" : "auto", textAlign: "center" }}>{BUSINESS.phone}</a>
@@ -315,7 +304,7 @@ function HomePage() {
           <div style={{ background: COLORS.greenDeep, borderRadius: 4, padding: isMobile ? "26px 22px" : "32px 28px", color: COLORS.paper }}>
             <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", color: COLORS.brass, marginBottom: 18 }}>About GSM</div>
             <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "rgba(246,243,236,0.85)", marginBottom: 16 }}>
-              George founded GSM Driving School in 2005 and has been DVSA-approved ever since, teaching across Notting Hill Gate, Holland Park and High Street Kensington — covering postcodes W9, W10, W12, W14, W4 and W3.
+              George founded GSM Driving School in 2005 and has been DVSA-approved ever since, teaching across Notting Hill Gate, Holland Park and High Street Kensington — covering postcodes W9, W10, W12, W14, W4 and W3. Abdul, also DVSA-approved, joined the team bringing the same patient, structured teaching style.
             </p>
             <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "rgba(246,243,236,0.85)" }}>
               Two decades teaching the same streets means knowing exactly where learners get caught out — and how to fix it before test day.
@@ -443,10 +432,10 @@ function TheoryPage({ setRoute }) {
             <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 12, color: COLORS.brassDeep, minWidth: 22 }}>{String(t.id).padStart(2, "0")}</span>
             <div style={{ flex: 1 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                <div style={{ fontSize: 14.5, fontWeight: 600, color: COLORS.ink }}>{t.name}</div>
+                <div style={{ fontFamily: "Inter, sans-serif", fontSize: 14.5, fontWeight: 600, color: COLORS.ink }}>{t.name}</div>
                 <span style={{ fontSize: 10, fontWeight: 600, color: COLORS.brassDeep, border: `1px solid ${COLORS.brass}`, borderRadius: 8, padding: "1px 7px", textTransform: "uppercase", letterSpacing: "0.03em" }}>Coming soon</span>
               </div>
-              <div style={{ fontSize: 12.5, color: COLORS.inkSoft }}>{t.desc}</div>
+              <div style={{ fontFamily: "Inter, sans-serif", fontSize: 12.5, color: COLORS.inkSoft }}>{t.desc}</div>
             </div>
           </div>
         ))}
@@ -519,10 +508,117 @@ function StorePage({ cart, setCart }) {
 function ReviewsPage() {
   const { isMobile } = useViewport();
   const reviews = [
+    { name: "Ksenia S", area: "GSM learner", text: "A disheartening experience years ago nearly meant giving up on a UK licence entirely — George's patience, clarity and genuine passion for his students turned the whole journey around. More than an instructor: a real driving force behind newfound confidence that's carried well beyond the road.", stars: 5 },
+    { name: "Grace Jemima", area: "GSM learner", text: "Brilliant, thank you so much — would highly recommend.", stars: 5 },
+    { name: "Robert McIlwham", area: "GSM learner", text: "Passed thanks to Abdul — patient, professional and supportive, explaining everything clearly and building confidence with every lesson. Felt genuinely well prepared going into the test.", stars: 5 },
+    { name: "Valeria Rozov", area: "GSM learner", text: "Came to George after a stressful experience with another school, and his patience from lesson one made all the difference. He took me from zero to pass, adapting to my pace the whole way, with genuinely original techniques you won't find anywhere else.", stars: 5 },
     { name: "Recent pass", area: "GSM learner", text: "George took me from complete beginner to passing, with incredible patience after a difficult experience with a previous instructor elsewhere.", stars: 5 },
-    { name: "Recent pass", area: "GSM learner", text: "A calm, friendly teaching style that made the small and big points click ahead of test day — lessons tailored to how I learn best.", stars: 5 },
-    { name: "17-year-old learner", area: "GSM learner", text: "Failed first time but George helped pinpoint exactly what to improve and got a retest booked quickly — passed on the second attempt.", stars: 5 },
-    { name: "Relocated from the US", area: "GSM learner", text: "George guided the whole process after a US licence expired on moving to the UK, building real confidence as a safe driver along the way.", stars: 5 },
+    { name: "Ramiz", area: "GSM learner", text: "Passed first time with such ease, all thanks to George — a calm, friendly atmosphere paired with genuinely impeccable teaching that covered every big and small point for the test. Lessons tailored just for me. An absolute pleasure.", stars: 5 },
+    { name: "Raniaa Salman", area: "GSM learner", text: "Passed at 17 while juggling school and exams — George was endlessly supportive after a first-attempt fail, pinpointing exactly what to fix and getting a quick retest booked. Calm, relaxed lessons that genuinely built my confidence behind the wheel.", stars: 5 },
+    { name: "Tommy Yong", area: "GSM learner", text: "Came to George after moving from the US with an expired licence — his knowledge of the DVSA test is second to none, and he guided the whole process from start to finish. Patient, dependable, and genuinely invested in my success. Passed feeling fully confident on UK roads.", stars: 5 },
+    { name: "Jeanne d'Ornellas", area: "GSM learner", text: "Had several years of US driving experience and came to George to get my UK licence after moving back — methodical, pleasant lessons that left me feeling every base was covered. Passed first time, with nothing catching me off guard.", stars: 5 },
+    { name: "Lona J", area: "Refresher lessons", text: "Held an EU licence but hadn't driven in over 10 years — George was endlessly patient, explained the why behind everything, and helped me regain real confidence behind the wheel. Worth the wait for a slot with him.", stars: 5 },
+    { name: "Adam Elwan", area: "GSM learner", text: "An amazing experience all round — patient, thorough explanations and lessons of a genuinely high standard. Passed the practical first time.", stars: 5 },
+    { name: "Abdul M", area: "GSM instructor — Part 2 instructor test", text: "Passed my Part 2 instructor test first time thanks to George — knowledgeable, calm and easy to learn from, always making sure things fully clicked before moving on. Top-notch support from start to finish.", stars: 5 },
+    { name: "Jennifer Girgis", area: "GSM learner", text: "Patience, expertise and clear explanations made the difference — passed my test on the first attempt, with constructive feedback that helped me improve quickly throughout. Highly recommend.", stars: 5 },
+    { name: "Ardz", area: "GSM learner", text: "Discouraged after failing my first test elsewhere, but George completely turned things around — patient, knowledgeable, and confidence-building. Passed first time with him.", stars: 5 },
+    { name: "Tabitha Hull", area: "GSM learner", text: "Failed three times elsewhere and thought I'd never pass — then passed first time with George, with zero minors. Every single lesson was a genuine pleasure, with constant support throughout.", stars: 5 },
+    { name: "Zack Lui", area: "GSM learner", text: "An exceptional ability to connect and explain hard-to-grasp concepts — went from expecting to fail two weeks out to a rapid turnaround, with George honing in on the exact root of each mistake rather than just correcting it. First-time pass, entirely down to his teaching.", stars: 5 },
+    { name: "Olivia Cunningham", area: "GSM learner", text: "George worked around a first-trimester pregnancy and a broken elbow, scheduling lessons around energy levels and nausea, and still got me test-ready and passed first time within two months. Teaches for genuine long-term confidence, not just to get you through the test — couldn't recommend trusting his process more.", stars: 5 },
+    { name: "Cardio Cardio", area: "GSM learner", text: "After failing three times elsewhere, George turned everything around — training genuinely personalised to my strengths and weaknesses, with every session better than the last. A guaranteed first-time pass after a 6-week intensive course.", stars: 5 },
+    { name: "Elizabet Kon", area: "GSM learner", text: "Felt welcomed and at ease from the very first lesson — patience blended with clear guidance that built real confidence behind the wheel in a genuinely comfortable, supportive environment. Passed on the first attempt.", stars: 5 },
+    { name: "Josephine Ross", area: "Refresher lessons", text: "Hadn't driven in 15 years after passing elsewhere and having two children — George's calm, bespoke lessons and genuine local knowledge of the area rebuilt my confidence from scratch. Teaches the mental side of calm, confident driving as much as the practical skills.", stars: 5 },
+    { name: "Julie Adam", area: "GSM learner", text: "Talented teaching at your own pace, with each lesson genuinely tailored to my specific needs for the test and beyond. First-time pass, and I feel properly safe and confident driving now. Highly recommend.", stars: 5 },
+    { name: "Valentina Shemelina", area: "Intensive course", text: "Amazed at how much I learned in such a short time — patient teaching and clear guidance built real confidence quickly. Passed first time straight off the intensive course.", stars: 5 },
+    { name: "Christopher Henry", area: "Intensive course", text: "An experienced US driver needing to unlearn old habits for hectic central London streets — a few short weeks of intensive practice with George made it both productive and genuinely enjoyable. Passed first time.", stars: 5 },
+    { name: "Clayton Michaels", area: "GSM learner", text: "First-time pass with only 2 minors at a test centre with a pass rate below 30% — an ability to explain and teach that genuinely stands apart. Will be recommending GSM to absolutely anyone who'll listen.", stars: 5 },
+    { name: "Phillip B-H", area: "GSM learner", text: "Went from completely lost on the road to noticeable progress after a single first lesson — every lesson strategically structured around safety. Reached a genuinely high, safe standard and passed first time with excellence.", stars: 5 },
+    { name: "Oxana Moskalenko", area: "GSM learner", text: "Came to George after a bad experience elsewhere and three failed attempts — his unique teaching method finally made local roads click, and I passed on the first try. Always finish a lesson in a good mood. 100% recommend.", stars: 5 },
+    { name: "Sean Cook", area: "GSM learner", text: "A brilliant teacher who left me genuinely confident on the road — first-time pass, great experience throughout.", stars: 5 },
+    { name: "Matilde Crapanzano", area: "GSM learner", text: "Extremely patient and accommodating around a tricky schedule, with kindness and road intelligence hard to find elsewhere. Felt genuinely confident by test day and passed first time. 100% recommend.", stars: 5 },
+    { name: "Sarah Cameron", area: "GSM learner", text: "Never thought a first-time pass was achievable after terrible past experiences — rigorous training that exceeds exam standard while building lifelong safe, confident driving. Signing up for Pass Plus straight after, I was so impressed.", stars: 5 },
+    { name: "Blerim Gashi", area: "GSM learner", text: "Started as a nervous complete beginner in hectic London traffic — George's calm, unhurried patience worked through every tricky area (roundabouts, parallel parking, junctions) until it genuinely clicked. Didn't just teach me to pass, taught me to actually drive independently with real confidence.", stars: 5 },
+    { name: "Eugénie Lale-Demoz", area: "GSM learner", text: "Learned entirely from scratch with George — hard-working, honest, and talented at spotting and fixing weaknesses seamlessly. Passed both theory and driving first time, and genuinely grew to enjoy driving along the way. Recommend 100%.", stars: 5 },
+    { name: "Ahmed Hisham", area: "GSM learner", text: "Passed first time thanks to genuine patience and kindness — more than an instructor, a real mentor who calmly guided me through tricky moments with humour and went well above and beyond throughout. A genuinely positive influence on the whole journey.", stars: 5 },
+    { name: "Jonathan Pullman", area: "GSM learner", text: "Complete beginner with zero driving experience — George built me into a confident, safe driver with a first-time pass and no minor mistakes at all. Couldn't recommend him enough.", stars: 5 },
+    { name: "Oliver Patterson", area: "GSM learner", text: "A relaxed teaching style that still lets you develop your own way of driving, backed by genuinely specific technical knowledge that goes beyond just passing the test. First-time pass, wouldn't have been possible without him. Overwhelmingly recommend.", stars: 5 },
+    { name: "Poppy Freeman", area: "GSM learner", text: "Amazingly thorough, clear explanations throughout — taught to drive safely to a high standard, not just to scrape a pass. Genuinely invested in seeing students succeed. Would definitely recommend.", stars: 5 },
+    { name: "Luis Garcia", area: "GSM learner", text: "Patient, never degrading over mistakes — instead clear, constructive feedback pinpointing exactly what went wrong and how to fix it, backed by flashcards and hand-drawn diagrams for specific road scenarios. Passed first time thanks to George. Highly recommend.", stars: 5 },
+    { name: "Tyler Merriman", area: "GSM learner", text: "After failing six times over two years elsewhere, passed first time with George — a uniquely personal, relaxing teaching style with real depth on the rules behind safe driving. Punctual and trustworthy, only booking the test once genuinely ready.", stars: 5 },
+    { name: "Alp Alkan", area: "GSM learner", text: "Incredibly knowledgeable and patient, always pushing you to become the best driver you can be. Passed first time within just 2 months of starting lessons.", stars: 5 },
+    { name: "I Martin", area: "GSM learner", text: "After a couple of negative encounters with other instructors, George's patience, extensive knowledge and genuine passion made all the difference — always taking the time to make sure everything was properly understood. A successful first-time pass and a thoroughly enjoyable journey throughout.", stars: 5 },
+    { name: "Ashley S", area: "GSM learner", text: "Struggled to find a good teacher elsewhere — George's knowledge of the rules and Highway Code, with clear explanations of driving scenarios, teaches well beyond exam standard. Passed first time. Best instructor in Notting Hill.", stars: 5 },
+    { name: "Indigo", area: "GSM learner", text: "Tailored lessons for a nervous driver, going out of his way to make every session feel calm and comfortable — more like hanging out with a friend than a lesson. Passed first time, which as a mother of two young children made having a licence genuinely invaluable.", stars: 5 },
+    { name: "Becky Fitzgerald", area: "GSM learner", text: "After instructors elsewhere who didn't seem to care, George was the opposite — thorough, personalised lessons that pinpointed and worked through my specific weaknesses until I felt genuinely prepared. Passed with only two minors, and actually looked forward to lessons instead of dreading them.", stars: 5 },
+    { name: "Anukrit Bhargava", area: "GSM learner", text: "Lessons tailored to your ability that are genuinely engaging and fun, striking the right balance between professionalism and an enjoyable learning experience — reaching DVSA standard as quickly, efficiently and safely as possible. A fantastic, highly professional experience throughout.", stars: 5 },
+    { name: "Felix Steveni", area: "GSM learner", text: "After delaying learning for years with other instructors, lessons with George led to quick progress from the start — each one customised to what was needed for safety and the test alike. Personable and easy to talk to, making every lesson feel comfortable. Passed first time, and recommend him especially for learning in a busy city like London.", stars: 5 },
+    { name: "Karen Munnis", area: "GSM learner", text: "Extremely knowledgeable, patient and friendly — felt thoroughly prepared and passed first time at Greenford. Highly recommend, whether new to driving or refreshing existing skills.", stars: 5 },
+    { name: "Petrina Hesketh", area: "GSM learner", text: "Calm, kind, honest, and excellent at explaining things in a way that genuinely makes sense — felt in very safe hands throughout. A positive experience from start to finish, with a first-time pass fully down to George's teaching.", stars: 5 },
+    { name: "Cosmo Radford", area: "GSM learner", text: "Knowledgeable and thorough while still keeping lessons genuinely enjoyable — went from a very nervous driver to a safe, confident one and passed first time. An all-round nice guy who always puts his students first.", stars: 5 },
+    { name: "Adam W. Smith", area: "GSM learner", text: "Found through a referral, and it showed why — a genuine feel for each student's ability level, with lessons tailored accordingly to get the most out of every one. Top-notch as an instructor, and just as good company.", stars: 5 },
+    { name: "Clemence Lellouche", area: "GSM learner", text: "Felt like a lost cause before meeting George — he reads your exact strengths and weaknesses and fixes them, almost like a doctor would. Professional and always punctual. Didn't just pass the test, but genuinely overcame the stress and lack of confidence behind it. The instructor every learner dreams of.", stars: 5 },
+    { name: "Frank Spotnitz", area: "GSM learner", text: "Calm, kind, attentive and observant — prepares you incredibly well for the exam while genuinely teaching you to become a better, safer driver for life. Passed first time. Highly recommend.", stars: 5 },
+    { name: "Adrien Alexandre", area: "GSM learner", text: "Helped get over an initial fear of driving, then built real confidence by reviewing strengths and weaknesses after every lesson. Incredibly organised — first-time pass with zero errors. Trains hard but keeps you calm and level-headed throughout. Several family members have passed with him too.", stars: 5 },
+    { name: "Antonella D'Alessio", area: "GSM learner", text: "Experienced and focused on exactly the areas I struggled with, getting me to a high standard quickly. Professional, with every lesson genuinely productive. A first-rate driving school.", stars: 5 },
+    { name: "Tatyana Djouhri", area: "GSM learner", text: "An amazing experience all the way through — passed on the first try. A genuine super star instructor.", stars: 5 },
+    { name: "Fozia J", area: "GSM learner", text: "The most patient, caring instructor — never gave up when things got hard, instead finding alternative ways to teach until it clicked. Trustworthy and genuinely values you as a student. Finally on the road thanks to him.", stars: 5 },
+    { name: "Isabella Taylor", area: "GSM learner", text: "Test rescheduled three times through Covid lockdowns, and George patiently kept space in his calendar through every change. Coached me from a nervous, not-very-good beginner into a confident driver — passed first time with just two minors. A great teacher and a great person.", stars: 5 },
+    { name: "Kumaree Ramhit", area: "GSM learner", text: "Dedicated, patient and conscientious — takes the time to identify weaknesses and builds real strategies to improve. After a previous instructor disappeared mid-lessons having already been paid, George went out of his way to prove he was trustworthy and committed to a long-awaited pass.", stars: 5 },
+    { name: "Tarik Ben Brahim", area: "GSM learner", text: "Passed first time within just a month, after six failed attempts with three previous instructors elsewhere. A methodical, rigorous teaching style that quickly identifies and fixes technique weaknesses — genuinely enjoyable company in the car too.", stars: 5 },
+    { name: "Achille Demeure", area: "GSM learner", text: "Professional and diligent, going above and beyond to work around a tricky schedule and get the hours in. Passed with only one minor mistake.", stars: 5 },
+    { name: "Chris Soares", area: "GSM learner", text: "Well-experienced and patient with mistakes, helping eradicate bad habits using videos and diagrams to support visual learning. Worth the slightly higher price — over 70 passes in 2019 alone speaks for itself. Personable and easy to talk to. Passed within just 3 months.", stars: 5 },
+    { name: "Rosemary King", area: "Intensive course", text: "A genius instructor — honest, firm, clear, with great tips for understanding how to drive safely to a proper standard. Did a two-week intensive and passed on the first try. Highly recommend.", stars: 5 },
+    { name: "Halvdan Hoegh", area: "GSM learner", text: "A genuinely nice guy who creates a great atmosphere in lessons, paired with extraordinary teaching and tips that led to a first-time pass.", stars: 5 },
+    { name: "Alexandra Sistovaris", area: "GSM learner", text: "Helped solidify driving to proper testing standards, all while keeping a consistently great attitude throughout. Highly recommended.", stars: 5 },
+    { name: "Merwan Bezzour", area: "GSM learner", text: "Extremely high driving standards and exceptional training — passed with only 1 minor mistake out of 15 allowed. Genuinely tailored to my needs, with real support felt throughout the whole process.", stars: 5 },
+    { name: "Jeevan", area: "GSM learner", text: "Built real confidence from zero experience by breaking what felt like a huge learning curve into smaller, manageable pieces until it all came together naturally. Focuses on good habits and safe driving from day one — genuinely felt like making a friend along the way.", stars: 5 },
+    { name: "Anna Wolarz", area: "GSM learner", text: "Never expected driving lessons to be fun and stress-free — a great personality and communication style that makes the whole experience genuinely enjoyable. Quick to spot the root of specific mistakes and explain how to correct them. Passed first time.", stars: 5 },
+    { name: "Albina Zhdanova", area: "GSM learner", text: "Already had driving experience but needed a UK licence — George's focus on teaching safety rather than just passing really showed afterwards, leaving me feeling far more secure on the road. Test booked three weeks before a strict deadline, and passed first attempt with three minors.", stars: 5 },
+    { name: "Abdullah", area: "GSM learner", text: "Expected a generic instructor through a family connection, but was instantly won over after the first lesson — better equipped and more genuinely invested than friends' instructors. Becomes more than just an instructor as you show commitment, genuinely turning into a friend along the way.", stars: 5 },
+    { name: "YM", area: "GSM learner", text: "An international driver with 10 years' experience elsewhere, but UK standards are genuinely different — George's focus on both skill and safety meant a first-time pass that wouldn't have happened without him. Professional, knowledgeable, and a pleasure to work with.", stars: 5 },
+    { name: "Rando Howard", area: "GSM learner", text: "Step by step from basic beginnings to exam standard, with easily remembered nuggets of driving wisdom along the way. Pay attention and you'll come out an excellent, genuinely safe driver.", stars: 5 },
+    { name: "Claire Morton", area: "GSM learner", text: "First-time pass over a summer that included weeks away travelling — George was accommodating around the schedule, staying organised and patient throughout. Highly recommend.", stars: 5 },
+    { name: "Bianca Nevins", area: "GSM learner", text: "Recommended by family and friends, and didn't disappoint — positive, knowledgeable, and made every lesson genuinely fun. Beyond happy to have passed.", stars: 5 },
+    { name: "John", area: "GSM learner", text: "Easy to get on with, with teaching knowledge that's genuinely the best around. Recommend him to anyone wanting to learn to drive.", stars: 5 },
+    { name: "Louiefx", area: "GSM learner", text: "Patient and hard-working, putting in real effort every single lesson. A motivating presence who taught valuable life lessons alongside driving itself, giving up spare time at short notice to help get me through to a pass.", stars: 5 },
+    { name: "Antonia Nagel", area: "GSM learner", text: "A complete professional — kind, fair, honest and hard-working, with personalised lesson plans that get you genuinely fit and ready to drive. Passed first time. Greatly recommend.", stars: 5 },
+    { name: "Carlos Subramanian", area: "GSM learner", text: "Superb instruction that held a high standard even through the uncertainty of Covid lockdowns — lessons stayed fun and interesting throughout. Patience, hard work and determination led to a first-time pass.", stars: 5 },
+    { name: "Maison Barbosa", area: "GSM learner", text: "An incredible person who adapted to my specific needs and got the best out of me — dedicated, patient, and genuinely attentive. Passed first time, would definitely recommend.", stars: 5 },
+    { name: "Mya Weeks", area: "GSM learner", text: "Taught from complete scratch in just a few months — persistent, clear with instructions, and a genuinely good motivator. Passed first time.", stars: 5 },
+    { name: "Charlie Thomson", area: "GSM learner", text: "Always patient and helpful, making the most of every lesson and treating you like a friend along the way. Genuinely devoted to helping you pass. Would definitely recommend.", stars: 5 },
+    { name: "Norhan Ali", area: "GSM learner", text: "Skills improved immensely — passed first time at Mill Hill. The best of the best.", stars: 5 },
+    { name: "Artem Bakulin", area: "GSM learner", text: "Steady, organised and professional teaching that's clearly responsive to each student's character and goals. Highly recommend.", stars: 5 },
+    { name: "Anna Grimes", area: "GSM learner", text: "Helps build genuine confidence on the road, extremely patient, with all the information and practice needed to pass. Very happy with the experience.", stars: 5 },
+    { name: "Joe Strong", area: "GSM learner", text: "Calm and clear, with real effort put into every student. Got both my sister and me first-time passes.", stars: 5 },
+    { name: "Vitaliia Budaieva", area: "GSM learner", text: "Always on time and attentive to detail — properly strict enough to genuinely prepare for how hard the UK test is, even coming from an international licence. A nice, always-clean car too. 100% recommend.", stars: 5 },
+    { name: "Ahmed Abouelseoud", area: "GSM learner", text: "Professional and patient, adjusting working hours to fit mine throughout. Genuinely appreciated everything done for me, and will be recommending widely.", stars: 5 },
+    { name: "Anna Morton", area: "GSM learner", text: "Passed first time! A great instructor who makes sure you pass while also genuinely learning to drive safely.", stars: 5 },
+    { name: "Mohamed Bedri", area: "GSM learner", text: "Highly professional and competent, tailoring lessons to individual needs — real experience that shows clearly in the way lessons are run. Highly recommended.", stars: 5 },
+    { name: "Leopold Rupf", area: "GSM learner — Michael", text: "An absolutely fantastic driving school — passed my licence in just over two weeks. Highly recommend Michael.", stars: 5 },
+    { name: "Max Gurney", area: "Intensive course", text: "A genuine gentleman who went out of his way to provide the best training possible, leading to a first-time pass. Would highly recommend the intensive course to anyone wanting to pass with real confidence.", stars: 5 },
+    { name: "Jean Campbell", area: "GSM learner", text: "An incredible driving instructor — genuinely grateful for such a wonderful experience.", stars: 5 },
+    { name: "Beena Salman", area: "GSM learner", text: "The best driving instructor — amazing techniques combined with a genuinely memorable experience. The guy to go to for a first-time pass.", stars: 5 },
+    { name: "Jasmine Cheung", area: "GSM learner", text: "An anxious driver who honestly didn't think a pass was possible — George's guidance and patience got me there first time. Over the moon. Couldn't recommend a better instructor.", stars: 5 },
+    { name: "Mekki Medani", area: "GSM learner", text: "Passed the UK test first time — a truly excellent, professional instructor who became a great friend along the way. Endlessly grateful for the support.", stars: 5 },
+    { name: "Peter Khalil", area: "GSM learner", text: "An excellent teacher who prepared me really well for the test. Would definitely recommend GSM Driving School.", stars: 5 },
+    { name: "Анатолий Бугаков", area: "GSM learner", text: "Passed on the first attempt thanks to a solid understanding of exam standards. Highly recommend.", stars: 5 },
+    { name: "Adam Niedziela", area: "GSM learner", text: "A great mentor who worked through my specific weaknesses and got me through the test. Would recommend to everyone.", stars: 5 },
+    { name: "P E", area: "GSM learner", text: "As an anxious driver, was put completely at ease and reassured throughout — passed with flying colours. Highly recommended.", stars: 5 },
+    { name: "Ollie Clyde", area: "GSM learner", text: "Passed first time — by far the best instructor in West London. A super easy pass and an all-round lovely man.", stars: 5 },
+    { name: "Richard Lewis", area: "GSM learner", text: "A wonderful, patient and knowledgeable instructor. Passed first time thanks to him.", stars: 5 },
+    { name: "Hector Crosbie", area: "GSM learner", text: "The best in the game — taught with a smile and great conversation throughout. 110% recommend.", stars: 5 },
+    { name: "Julia B", area: "GSM learner", text: "Couldn't ask for a better instructor — passed first time. Professional, helpful, kind and insightful throughout. Wouldn't change a thing.", stars: 5 },
+    { name: "Dan Morelli", area: "GSM learner", text: "Extraordinary service — professional, detail-oriented, and a truly experienced teacher who genuinely improves your chances of passing first time.", stars: 5 },
+    { name: "Abz Kamal", area: "GSM learner", text: "Great techniques and teaching style — passed first time. Highly recommended.", stars: 5 },
+    { name: "Romina Nejad", area: "GSM learner", text: "Kind and clear teaching that builds driving skills slowly but perfectly. Friendly and professional throughout.", stars: 5 },
+    { name: "Alex Catterall", area: "GSM learner", text: "If you're serious about getting your licence, you need a serious instructor — lucky enough to have George, and it led straight to a pass.", stars: 5 },
+    { name: "Vladimir Lanin", area: "GSM learner", text: "Hardworking and capable, with a genuinely high driving standard — practically impossible not to pass after lessons with him.", stars: 5 },
+    { name: "Rose Hughes", area: "GSM learner", text: "Truly patient throughout, and dedicated to genuinely turning you into a great driver, not just getting you through the test. Thank you!", stars: 5 },
+    { name: "Amanda Sead", area: "GSM learner", text: "An amazing driving learning experience — would definitely recommend.", stars: 5 },
+    { name: "Yuggy Smith", area: "GSM learner", text: "Best of the best, fair and honest — got the pass with plenty of help along the way.", stars: 5 },
+    { name: "Cobby Simpey", area: "GSM learner", text: "Passed first time — a great instructor.", stars: 5 },
+    { name: "Felix Nash", area: "GSM learner", text: "A fantastic, very patient instructor — the best out there.", stars: 5 },
+    { name: "Abood Ad", area: "GSM learner", text: "The best instructor — no regrets at all.", stars: 5 },
   ];
   return (
     <Section>
@@ -537,7 +633,7 @@ function ReviewsPage() {
       <p style={{ color: COLORS.inkSoft, fontSize: 13.5, marginBottom: isMobile ? 20 : 28 }}>
         A few highlights below, adapted from real Google reviews. Google only makes a handful of reviews available through search — for all {BUSINESS.ratingCount}, see the full listing.
       </p>
-      <a href={BUSINESS.googleMapsUrl} onClick={(e) => { e.preventDefault(); openExternal(BUSINESS.googleMapsUrl); }} style={{
+      <a href={BUSINESS.googleMapsUrl} target="_blank" rel="noopener noreferrer" style={{
         display: "inline-flex", alignItems: "center", gap: 8, marginBottom: isMobile ? 24 : 32,
         background: COLORS.greenDeep, color: COLORS.paper, padding: "12px 20px", borderRadius: 3,
         fontSize: 13.5, fontWeight: 600, textDecoration: "none", cursor: "pointer",
@@ -557,7 +653,7 @@ function ReviewsPage() {
       </div>
       <div style={{ marginTop: isMobile ? 24 : 32, padding: "16px 20px", background: COLORS.paperWarm, border: `1px solid ${COLORS.line}`, borderRadius: 4, textAlign: "center" }}>
         <p style={{ fontSize: 13, color: COLORS.inkSoft, marginBottom: 10 }}>Want the complete picture? Read every review directly on Google.</p>
-        <a href={BUSINESS.googleMapsUrl} onClick={(e) => { e.preventDefault(); openExternal(BUSINESS.googleMapsUrl); }} style={{ fontSize: 13.5, fontWeight: 600, color: COLORS.greenDeep, textDecoration: "underline", cursor: "pointer" }}>
+        <a href={BUSINESS.googleMapsUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13.5, fontWeight: 600, color: COLORS.greenDeep, textDecoration: "underline", cursor: "pointer" }}>
           View GSM Driving School on Google Maps →
         </a>
       </div>
@@ -567,7 +663,11 @@ function ReviewsPage() {
 
 // Add more entries here as new photos come in — just drop the file into
 // /public/gallery/ and add a line below pointing to it.
-const GALLERY_PHOTOS = [];
+const GALLERY_PHOTOS = [
+  { src: "/gallery/IMG_5103.jpg", caption: "Pass day!" },
+  { src: "/gallery/IMG_5104.jpg", caption: "Pass day!" },
+  { src: "/gallery/IMG_5105.jpg", caption: "Pass day!" },
+];
 
 function GalleryPage() {
   const { isMobile } = useViewport();
@@ -632,7 +732,7 @@ function ContactPage() {
           </a>
           <div style={{ fontSize: 13.5, color: COLORS.ink, fontWeight: 600, marginBottom: 4 }}>Address</div>
           <div style={{ fontSize: 14, color: COLORS.inkSoft, marginBottom: 8, lineHeight: 1.6 }}>{BUSINESS.address}</div>
-          <a href={BUSINESS.googleMapsUrl} onClick={(e) => { e.preventDefault(); openExternal(BUSINESS.googleMapsUrl); }} style={{ fontSize: 12.5, color: COLORS.greenDeep, textDecoration: "underline", cursor: "pointer", display: "inline-block", marginBottom: 20 }}>
+          <a href={BUSINESS.googleMapsUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12.5, color: COLORS.greenDeep, textDecoration: "underline", cursor: "pointer", display: "inline-block", marginBottom: 20 }}>
             View on Google Maps →
           </a>
           <div style={{ fontSize: 13.5, color: COLORS.ink, fontWeight: 600, marginBottom: 8 }}>Opening hours</div>
@@ -643,7 +743,7 @@ function ContactPage() {
               </div>
             ))}
           </div>
-          <a href={BUSINESS.instagramUrl} onClick={(e) => { e.preventDefault(); openExternal(BUSINESS.instagramUrl); }} style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13.5, fontWeight: 600, color: COLORS.greenDeep, textDecoration: "underline", cursor: "pointer" }}>
+          <a href={BUSINESS.instagramUrl} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: 13.5, fontWeight: 600, color: COLORS.greenDeep, textDecoration: "underline", cursor: "pointer" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke={COLORS.greenDeep} strokeWidth="1.8" /><circle cx="12" cy="12" r="4" stroke={COLORS.greenDeep} strokeWidth="1.8" /><circle cx="17.5" cy="6.5" r="1.2" fill={COLORS.greenDeep} /></svg>
             Follow @gsm_driving_school_ on Instagram
           </a>
@@ -807,8 +907,8 @@ function Dashboard({ app }) {
         {TOPICS.map(t => (
           <div key={t.id} style={{ display: "flex", alignItems: "center", gap: 12, padding: "8px 0", borderBottom: `1px solid ${COLORS.line}` }}>
             <div style={{ width: 16, height: 16, borderRadius: "50%", background: app.completedTopics.has(t.id) ? COLORS.greenDeep : "transparent", border: `1.5px solid ${app.completedTopics.has(t.id) ? COLORS.greenDeep : COLORS.inkSoft}`, flexShrink: 0 }} />
-            <span style={{ fontSize: 13.5, color: COLORS.ink, flex: 1 }}>{t.name}</span>
-            <span style={{ fontSize: 11.5, color: COLORS.inkSoft }}>{app.completedTopics.has(t.id) ? "Complete" : "Not started"}</span>
+            <span style={{ fontFamily: "Inter, sans-serif", fontSize: 13.5, color: COLORS.ink, flex: 1 }}>{t.name}</span>
+            <span style={{ fontFamily: "Inter, sans-serif", fontSize: 11.5, color: COLORS.inkSoft }}>{app.completedTopics.has(t.id) ? "Complete" : "Not started"}</span>
           </div>
         ))}
       </div>
@@ -855,8 +955,8 @@ function TopicsScreen({ app }) {
           <div key={t.id} onClick={() => app.setActiveTopic(t.id)} style={{ cursor: "pointer", background: COLORS.paper, border: `1px solid ${COLORS.line}`, borderRadius: 4, padding: "16px 16px", display: "flex", gap: 12, alignItems: "flex-start" }}>
             <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 12, color: COLORS.brassDeep, paddingTop: 2 }}>{String(t.id).padStart(2, "0")}</span>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 14.5, fontWeight: 600, color: COLORS.ink, marginBottom: 4 }}>{t.name}</div>
-              <div style={{ fontSize: 12, color: COLORS.inkSoft }}>{t.desc}</div>
+              <div style={{ fontFamily: "Inter, sans-serif", fontSize: 14.5, fontWeight: 600, color: COLORS.ink, marginBottom: 4 }}>{t.name}</div>
+              <div style={{ fontFamily: "Inter, sans-serif", fontSize: 12, color: COLORS.inkSoft }}>{t.desc}</div>
             </div>
             {app.completedTopics.has(t.id) && <span style={{ fontSize: 10.5, color: COLORS.greenDeep, fontWeight: 700 }}>✓</span>}
           </div>
@@ -899,7 +999,7 @@ function buildSystemPrompt(isLearner) {
   let prompt = `You are the AI assistant for GSM Driving School (George's School of Motoring), a real DVSA-approved driving school in West London, established 2005.
 
 Real business facts you must use and never contradict:
-- Instructors: GSM has DVSA-approved instructors teaching across the covered areas. Don't name a specific instructor unless the person asks about George specifically (the founder) — refer to "our instructors" generally otherwise.
+- Instructors: George (founder) and Abdul, both DVSA-approved, teaching across the covered areas.
 - Areas covered: Notting Hill Gate, Holland Park, High Street Kensington — and postcodes W9, W10, W12, W14, W4, and W3.
 - Both manual and automatic lessons are available.
 - Address: ${BUSINESS.address}.
@@ -981,10 +1081,17 @@ function ChatWidget({ isLearner, chat, setChat }) {
     setError(null);
     try {
       const apiMessages = newMessages.map(m => ({ role: m.role, content: m.text }));
-      const response = await fetch("/api/chat", {
+      // NOTE: This artifact preview copy calls the Anthropic API directly so
+      // it can be tested right here in chat. The deployable project (zip)
+      // calls /api/chat instead — a secure server-side proxy — because a
+      // real live website must never expose the API key in browser code.
+      // Do not copy this direct-call version into the deploy zip.
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          model: "claude-sonnet-4-6",
+          max_tokens: 1000,
           system: buildSystemPrompt(isLearner),
           messages: apiMessages,
         }),
@@ -1141,8 +1248,8 @@ function VideosScreen({ app }) {
                 )}
               </div>
               <div style={{ padding: isMobile ? "10px 10px" : "12px 14px" }}>
-                <div style={{ fontSize: 12.5, fontWeight: 600, color: COLORS.ink }}>{t.name}</div>
-                <div style={{ fontSize: 11, color: COLORS.inkSoft, marginTop: 2 }}>{hasVideo ? "Watch now" : "Not yet uploaded"}</div>
+                <div style={{ fontFamily: "Inter, sans-serif", fontSize: 12.5, fontWeight: 600, color: COLORS.ink }}>{t.name}</div>
+                <div style={{ fontFamily: "Inter, sans-serif", fontSize: 11, color: COLORS.inkSoft, marginTop: 2 }}>{hasVideo ? "Watch now" : "Not yet uploaded"}</div>
               </div>
             </div>
           );
@@ -1591,7 +1698,7 @@ export default function App() {
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
               <span style={{ fontSize: 13 }}>{BUSINESS.phone} · {BUSINESS.email} · Drive today. Succeed tomorrow.</span>
-              <a href={BUSINESS.instagramUrl} onClick={(e) => { e.preventDefault(); openExternal(BUSINESS.instagramUrl); }} aria-label="Instagram" style={{ display: "flex", cursor: "pointer" }}>
+              <a href={BUSINESS.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ display: "flex", cursor: "pointer" }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="rgba(246,243,236,0.85)" strokeWidth="1.8" /><circle cx="12" cy="12" r="4" stroke="rgba(246,243,236,0.85)" strokeWidth="1.8" /><circle cx="17.5" cy="6.5" r="1.2" fill="rgba(246,243,236,0.85)" /></svg>
               </a>
             </div>
